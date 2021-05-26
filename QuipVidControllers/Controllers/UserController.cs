@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using QuipVid.Core.Data;
 using QuipVid.Core.Models.Dto;
 using QuipVid.Core.Repositories;
 

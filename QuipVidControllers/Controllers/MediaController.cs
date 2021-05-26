@@ -60,7 +60,7 @@ namespace QuipVidControllers.Controllers
         }
 
         [HttpPut("{id:guid}")]
-        public async Task<ActionResult> Update(Guid id, CreateMediaRequest updateMedia)
+        public async Task<ActionResult> Update(Guid id, UpdateMediaRequest updateMedia)
         {
             var media = await _mediaRepository.GetById(id);
 

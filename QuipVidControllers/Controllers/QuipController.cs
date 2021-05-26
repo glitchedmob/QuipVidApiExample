@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using QuipVid.Core.Data;
+using QuipVid.Core.Models;
 using QuipVid.Core.Models.Dto;
 using QuipVid.Core.Repositories;
+using QuipVidControllers.Requests;
 
 namespace QuipVidControllers.Controllers
 {
@@ -42,6 +42,58 @@ namespace QuipVidControllers.Controllers
             }
 
             return _mapper.Map<QuipDto>(quip);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<QuipDto>> Create(CreateQuipRequest createQuip)
+        {
+            var quip = new Quip
+            {
+                Title = createQuip.Title,
+                VideoUrl = createQuip.VideoUrl,
+                ThumbnailUrl = createQuip.ThumbnailUrl,
+                MediaId = createQuip.MediaId,
+                UploaderId = createQuip.UploaderId,
+            };
+
+            await _quipRepository.Create(quip);
+
+            quip = await _quipRepository.GetById(quip.Id);
+
+            var quipDto = _mapper.Map<QuipDto>(quip);
+
+            return CreatedAtAction(nameof(Show), new { id = quipDto.Id }, quip);
+        }
+
+        [HttpPut("{id:guid}")]
+        public async Task<ActionResult> Update(Guid id, UpdateQuipRequest updateQuip)
+        {
+            var quip = await _quipRepository.GetById(id);
+
+            if (quip == null)
+            {
+                return NotFound();
+            }
+
+
+            await _quipRepository.Update(quip);
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id:guid}")]
+        public async Task<ActionResult> Destroy(Guid id)
+        {
+            var quip = await _quipRepository.GetById(id);
+
+            if (quip == null)
+            {
+                return NotFound();
+            }
+
+            await _quipRepository.Delete(quip);
+
+            return NoContent();
         }
     }
 }
