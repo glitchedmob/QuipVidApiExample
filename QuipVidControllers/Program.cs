@@ -14,7 +14,7 @@ namespace QuipVidControllers
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-                DatabaseSeeder.Seed(services);
+                DatabaseSeeder.Seed(services).GetAwaiter().GetResult();
             }
 
             host.Run();

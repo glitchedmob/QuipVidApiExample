@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using QuipVid.Core.Models;
@@ -8,7 +9,7 @@ namespace QuipVid.Core.Data
 {
     public class DatabaseSeeder
     {
-        public static void Seed(IServiceProvider serviceProvider)
+        public static async Task Seed(IServiceProvider serviceProvider)
         {
             var options = serviceProvider.GetRequiredService<DbContextOptions<AppDbContext>>();
             using var context = new AppDbContext(options);
@@ -142,7 +143,7 @@ namespace QuipVid.Core.Data
             context.Users.AddRange(users);
             context.Media.AddRange(media);
             context.Quips.AddRange(quips);
-            context.SaveChanges();
+            await context.SaveChangesAsync();
         }
     }
 }
