@@ -9,8 +9,8 @@ namespace QuipVid.Core.Models
         public int Views { get; set; }
         public string VideoUrl { get; set; }
         public string ThumbnailUrl { get; set; }
-        public Guid MovieId { get; set; }
-        public Movie Movie { get; set; }
+        public Guid MediaId { get; set; }
+        public Media Media { get; set; }
         public Guid UploaderId { get; set; }
         public User Uploader { get; set; }
         public DateTimeOffset CreatedAt { get; set; }

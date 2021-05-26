@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace QuipVid.Core.Models
 {
-    public class Movie
+    public class Media
     {
         public Guid Id { get; set; }
         public string Title { get; set; }
