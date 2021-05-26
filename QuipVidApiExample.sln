@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuipVidControllers", "QuipV
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuipVidApiEndpoints", "QuipVidApiEndpoints\QuipVidApiEndpoints.csproj", "{FDF0C53C-B13B-461A-A685-E2C6E8303F60}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuipVid.Core", "QuipVid.Core\QuipVid.Core.csproj", "{BE988CCC-ED83-4505-A5A6-E9D6F9DFB51C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{FDF0C53C-B13B-461A-A685-E2C6E8303F60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDF0C53C-B13B-461A-A685-E2C6E8303F60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDF0C53C-B13B-461A-A685-E2C6E8303F60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE988CCC-ED83-4505-A5A6-E9D6F9DFB51C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE988CCC-ED83-4505-A5A6-E9D6F9DFB51C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE988CCC-ED83-4505-A5A6-E9D6F9DFB51C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE988CCC-ED83-4505-A5A6-E9D6F9DFB51C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

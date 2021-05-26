@@ -4,4 +4,8 @@
         <TargetFramework>net5.0</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\QuipVid.Core\QuipVid.Core.csproj" />
+    </ItemGroup>
+
 </Project>
