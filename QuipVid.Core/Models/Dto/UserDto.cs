@@ -7,6 +7,6 @@ namespace QuipVid.Core.Models.Dto
     {
         public Guid Id { get; set; }
         public string UserName { get; set; }
-        public ICollection<UserQuipDto> Quips { get; set; }
+        public IList<UserQuipDto> Quips { get; set; } = new List<UserQuipDto>();
     }
 }

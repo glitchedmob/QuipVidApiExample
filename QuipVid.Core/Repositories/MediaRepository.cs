@@ -16,7 +16,7 @@ namespace QuipVid.Core.Repositories
             _context = context;
         }
 
-        public async Task<ICollection<Media>> GetAll()
+        public async Task<IList<Media>> GetAll()
         {
             return await _context.Media.AsNoTracking()
                 .Include(m => m.Quips)

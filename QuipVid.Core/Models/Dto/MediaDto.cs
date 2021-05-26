@@ -7,6 +7,6 @@ namespace QuipVid.Core.Models.Dto
     {
         public Guid Id { get; set; }
         public string Title { get; set; }
-        public ICollection<MediaQuipDto> Quips { get; set; }
+        public IList<MediaQuipDto> Quips { get; set; } = new List<MediaQuipDto>();
     }
 }

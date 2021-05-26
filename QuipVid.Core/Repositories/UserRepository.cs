@@ -16,7 +16,7 @@ namespace QuipVid.Core.Repositories
             _context = context;
         }
 
-        public async Task<ICollection<User>> GetAll()
+        public async Task<IList<User>> GetAll()
         {
             return await _context.Users.AsNoTracking()
                 .Include(u => u.Quips)
