@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using QuipVid.Core.Data;
+using QuipVid.Core.Repositories;
 
 namespace QuipVidControllers
 {
@@ -13,8 +14,14 @@ namespace QuipVidControllers
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(typeof(AppMappingProfile));
+
             services.AddDbContext<AppDbContext>(opt =>
                 opt.UseInMemoryDatabase(databaseName: "QuipVidControllers"));
+
+            services.AddScoped<MediaRepository>();
+            services.AddScoped<UserRepository>();
+            services.AddScoped<QuipRepository>();
 
             services.AddControllers();
         }

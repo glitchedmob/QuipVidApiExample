@@ -1,10 +1,9 @@
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using QuipVid.Core.Data;
-using QuipVid.Core.Models;
+using QuipVid.Core.Models.Dto;
+using QuipVid.Core.Repositories;
 
 namespace QuipVidControllers.Controllers
 {
@@ -12,31 +11,21 @@ namespace QuipVidControllers.Controllers
     [ApiController]
     public class MediaController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly MediaRepository _mediaRepository;
+        private readonly IMapper _mapper;
 
-        public MediaController(AppDbContext context)
+        public MediaController(MediaRepository mediaRepository, IMapper mapper)
         {
-            _context = context;
+            _mediaRepository = mediaRepository;
+            _mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Media>>> Index()
+        public async Task<ActionResult<List<MediaDto>>> Index()
         {
-            var media = await _context.Media.AsNoTracking()
-                .Include(m => m.Quips)
-                .ThenInclude(q => q.Uploader)
-                .ToListAsync();
+            var media = await _mediaRepository.GetAll();
 
-            media.ForEach(m =>
-            {
-                m.Quips.ToList().ForEach(q =>
-                {
-                    q.Media = null;
-                    q.Uploader.Quips = new List<Quip>();
-                });
-            });
-
-            return media;
+            return _mapper.Map<List<MediaDto>>(media);
         }
     }
 }
