@@ -56,7 +56,7 @@ namespace QuipVidControllers.Controllers
 
             var mediaDto = _mapper.Map<MediaDto>(media);
 
-            return CreatedAtAction(nameof(Show), new { id = mediaDto.Id }, media);
+            return CreatedAtAction(nameof(Show), new { id = mediaDto.Id }, mediaDto);
         }
 
         [HttpPut("{id:guid}")]

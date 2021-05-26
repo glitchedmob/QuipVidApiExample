@@ -62,7 +62,7 @@ namespace QuipVidControllers.Controllers
 
             var quipDto = _mapper.Map<QuipDto>(quip);
 
-            return CreatedAtAction(nameof(Show), new { id = quipDto.Id }, quip);
+            return CreatedAtAction(nameof(Show), new { id = quipDto.Id }, quipDto);
         }
 
         [HttpPut("{id:guid}")]
@@ -75,6 +75,12 @@ namespace QuipVidControllers.Controllers
                 return NotFound();
             }
 
+            quip.Title = updateQuip.Title;
+            quip.Views = updateQuip.Views;
+            quip.VideoUrl = updateQuip.VideoUrl;
+            quip.ThumbnailUrl = updateQuip.ThumbnailUrl;
+            quip.MediaId = updateQuip.MediaId;
+            quip.UploaderId = updateQuip.UploaderId;
 
             await _quipRepository.Update(quip);
 
