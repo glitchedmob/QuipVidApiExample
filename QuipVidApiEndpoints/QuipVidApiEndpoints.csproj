@@ -37,6 +37,18 @@
       <Compile Update="Media\DeleteMediaRequest.cs">
         <DependentUpon>Delete.cs</DependentUpon>
       </Compile>
+      <Compile Update="Quip\GetQuipRequest.cs">
+        <DependentUpon>Get.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Quip\GetQuipResult.cs">
+        <DependentUpon>Get.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Quip\CreateQuipRequest.cs">
+        <DependentUpon>Create.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Quip\CreateQuipResult.cs">
+        <DependentUpon>Create.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>

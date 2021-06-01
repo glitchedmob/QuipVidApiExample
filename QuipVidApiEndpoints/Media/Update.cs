@@ -6,6 +6,7 @@ using QuipVid.Core.Repositories;
 
 namespace QuipVidApiEndpoints.Media
 {
+    [Route(Routes.Media)]
     public class Update : BaseAsyncEndpoint
         .WithRequest<UpdateMediaRequest>
         .WithoutResponse

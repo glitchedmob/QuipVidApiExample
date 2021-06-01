@@ -6,6 +6,7 @@ using QuipVid.Core.Repositories;
 
 namespace QuipVidApiEndpoints.Media
 {
+    [Route(Routes.Media)]
     public class Delete : BaseAsyncEndpoint
         .WithRequest<DeleteMediaRequest>
         .WithoutResponse

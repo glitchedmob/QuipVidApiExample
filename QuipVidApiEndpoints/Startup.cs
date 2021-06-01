@@ -27,7 +27,10 @@ namespace QuipVidApiEndpoints
             services.AddScoped<UserRepository>();
             services.AddScoped<QuipRepository>();
 
-            services.AddControllers();
+            services.AddControllers(options =>
+            {
+                options.SuppressAsyncSuffixInActionNames = false;
+            });
 
             services.AddSwaggerGen(c =>
             {

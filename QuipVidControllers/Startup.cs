@@ -18,7 +18,7 @@ namespace QuipVidControllers
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAutoMapper(typeof(AppMappingProfile));
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddDbContext<AppDbContext>(opt =>
                 opt.UseInMemoryDatabase(databaseName: "QuipVidControllers"));

@@ -23,6 +23,7 @@ namespace QuipVidApiEndpoints.Media
             _mapper = mapper;
         }
 
+        [HttpGet]
         public override async Task<ActionResult<IList<ListMediaResult>>> HandleAsync(
             CancellationToken cancellationToken = default)
         {
