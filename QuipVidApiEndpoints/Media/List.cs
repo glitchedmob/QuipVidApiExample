@@ -12,7 +12,7 @@ namespace QuipVidApiEndpoints.Media
     [Route(Routes.Media)]
     public class List : BaseAsyncEndpoint
         .WithoutRequest
-        .WithResponse<List<MediaDto>>
+        .WithResponse<IList<ListMediaResult>>
     {
         private readonly MediaRepository _mediaRepository;
         private readonly IMapper _mapper;
@@ -23,12 +23,12 @@ namespace QuipVidApiEndpoints.Media
             _mapper = mapper;
         }
 
-        public override async Task<ActionResult<List<MediaDto>>> HandleAsync(
+        public override async Task<ActionResult<IList<ListMediaResult>>> HandleAsync(
             CancellationToken cancellationToken = default)
         {
             var media = await _mediaRepository.GetAll();
 
-            return _mapper.Map<List<MediaDto>>(media);
+            return _mapper.Map<List<ListMediaResult>>(media);
         }
     }
 }

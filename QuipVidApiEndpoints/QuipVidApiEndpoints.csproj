@@ -19,6 +19,24 @@
       <Compile Update="Media\GetMediaRequest.cs">
         <DependentUpon>Get.cs</DependentUpon>
       </Compile>
+      <Compile Update="Media\CreateMediaRequest.cs">
+        <DependentUpon>Create.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Media\ListMediaResult.cs">
+        <DependentUpon>List.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Media\GetMediaResult.cs">
+        <DependentUpon>Get.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Media\CreateMediaResult.cs">
+        <DependentUpon>Create.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Media\UpdateMediaRequest.cs">
+        <DependentUpon>Update.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Media\DeleteMediaRequest.cs">
+        <DependentUpon>Delete.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>

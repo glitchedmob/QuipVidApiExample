@@ -1,28 +1,24 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Ardalis.ApiEndpoints;
-using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using QuipVid.Core.Repositories;
 
 namespace QuipVidApiEndpoints.Media
 {
-    [Route(Routes.Media)]
-    public class Get : BaseAsyncEndpoint
-        .WithRequest<GetMediaRequest>
-        .WithResponse<GetMediaResult>
+    public class Update : BaseAsyncEndpoint
+        .WithRequest<UpdateMediaRequest>
+        .WithoutResponse
     {
         private readonly MediaRepository _mediaRepository;
-        private readonly IMapper _mapper;
 
-        public Get(MediaRepository mediaRepository, IMapper mapper)
+        public Update(MediaRepository mediaRepository)
         {
             _mediaRepository = mediaRepository;
-            _mapper = mapper;
         }
 
-        [HttpGet("{id:guid}")]
-        public override async Task<ActionResult<GetMediaResult>> HandleAsync(GetMediaRequest request,
+        [HttpPut("{id:guid}")]
+        public override async Task<ActionResult> HandleAsync(UpdateMediaRequest request,
             CancellationToken cancellationToken = default)
         {
             var media = await _mediaRepository.GetById(request.Id);
@@ -32,7 +28,11 @@ namespace QuipVidApiEndpoints.Media
                 return NotFound();
             }
 
-            return _mapper.Map<GetMediaResult>(media);
+            media.Title = request.Title;
+
+            await _mediaRepository.Update(media);
+
+            return NoContent();
         }
     }
 }
