@@ -8,16 +8,13 @@ namespace QuipVidApiEndpoints.User
         public UserMappingProfile()
         {
             CreateMap<Models.User, ListUserResult>();
-            CreateMap<Models.Quip, ListUserResult.Quip>()
+            CreateMap<Models.User, GetUserResult>();
+
+            CreateMap<Models.Quip, UserQuipDto>()
                 .ForMember(
                     dest => dest.MediaTitle,
                     opt => opt.MapFrom(src => src.Media.Title));
 
-            CreateMap<Models.User, GetUserResult>();
-            CreateMap<Models.Quip, GetUserResult.Quip>()
-                .ForMember(
-                    dest => dest.MediaTitle,
-                    opt => opt.MapFrom(src => src.Media.Title));
         }
     }
 }

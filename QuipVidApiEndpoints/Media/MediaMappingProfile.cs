@@ -8,16 +8,13 @@ namespace QuipVidApiEndpoints.Media
         public MediaMappingProfile()
         {
             CreateMap<Models.Media, ListMediaResult>();
-            CreateMap<Models.Quip, ListMediaResult.Quip>()
+            CreateMap<Models.Media, GetMediaResult>();
+
+            CreateMap<Models.Quip, MediaQuipDto>()
                 .ForMember(
                     dest => dest.UploaderUserName,
                     opt => opt.MapFrom(src => src.Uploader.UserName));
 
-            CreateMap<Models.Media, GetMediaResult>();
-            CreateMap<Models.Quip, GetMediaResult.Quip>()
-                .ForMember(
-                    dest => dest.UploaderUserName,
-                    opt => opt.MapFrom(src => src.Uploader.UserName));
 
             CreateMap<Models.Media, CreateMediaResult>();
         }

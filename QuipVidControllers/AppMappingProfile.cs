@@ -1,5 +1,6 @@
 using AutoMapper;
 using QuipVid.Core.Models;
+using QuipVidControllers.Classes;
 using QuipVidControllers.Results;
 
 namespace QuipVidControllers
@@ -9,13 +10,8 @@ namespace QuipVidControllers
         public AppMappingProfile()
         {
             CreateMap<Media, ListMediaResult>();
-            CreateMap<Quip, ListMediaResult.Quip>()
-                .ForMember(
-                    dest => dest.UploaderUserName,
-                    opt => opt.MapFrom(src => src.Uploader.UserName));
-
             CreateMap<Media, GetMediaResult>();
-            CreateMap<Quip, GetMediaResult.Quip>()
+            CreateMap<Quip, MediaQuipDto>()
                 .ForMember(
                     dest => dest.UploaderUserName,
                     opt => opt.MapFrom(src => src.Uploader.UserName));
@@ -47,13 +43,8 @@ namespace QuipVidControllers
                     opt => opt.MapFrom(src => src.Uploader.UserName));
 
             CreateMap<User, ListUserResult>();
-            CreateMap<Quip, ListUserResult.Quip>()
-                .ForMember(
-                    dest => dest.MediaTitle,
-                    opt => opt.MapFrom(src => src.Media.Title));
-
             CreateMap<User, GetUserResult>();
-            CreateMap<Quip, GetUserResult.Quip>()
+            CreateMap<Quip, UserQuipDto>()
                 .ForMember(
                     dest => dest.MediaTitle,
                     opt => opt.MapFrom(src => src.Media.Title));
