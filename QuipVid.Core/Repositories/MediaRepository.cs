@@ -7,7 +7,7 @@ using QuipVid.Core.Models;
 
 namespace QuipVid.Core.Repositories
 {
-    public class MediaRepository : IRepository<Media>
+    public class MediaRepository
     {
         private readonly AppDbContext _context;
 

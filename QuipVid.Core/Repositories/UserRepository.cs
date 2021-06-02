@@ -7,7 +7,7 @@ using QuipVid.Core.Models;
 
 namespace QuipVid.Core.Repositories
 {
-    public class UserRepository : IReadRepository<User>
+    public class UserRepository
     {
         private readonly AppDbContext _context;
 
