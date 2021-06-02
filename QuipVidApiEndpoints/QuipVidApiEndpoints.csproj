@@ -58,6 +58,15 @@
       <Compile Update="Quip\DeleteQuipRequest.cs">
         <DependentUpon>Delete.cs</DependentUpon>
       </Compile>
+      <Compile Update="User\ListUserResult.cs">
+        <DependentUpon>List.cs</DependentUpon>
+      </Compile>
+      <Compile Update="User\GetUserResult.cs">
+        <DependentUpon>Get.cs</DependentUpon>
+      </Compile>
+      <Compile Update="User\GetUserRequest.cs">
+        <DependentUpon>Get.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>

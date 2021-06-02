@@ -1,5 +1,4 @@
 using AutoMapper;
-using QuipVidApiEndpoints.Media;
 using Models = QuipVid.Core.Models;
 
 namespace QuipVidApiEndpoints.Media
