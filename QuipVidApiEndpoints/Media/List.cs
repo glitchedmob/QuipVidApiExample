@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Ardalis.ApiEndpoints;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using QuipVid.Core.Models.Dto;
 using QuipVid.Core.Repositories;
 
 namespace QuipVidApiEndpoints.Media

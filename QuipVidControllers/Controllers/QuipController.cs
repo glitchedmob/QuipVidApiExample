@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using QuipVid.Core.Models;
-using QuipVid.Core.Models.Dto;
 using QuipVid.Core.Repositories;
 using QuipVidControllers.Requests;
+using QuipVidControllers.Results;
 
 namespace QuipVidControllers.Controllers
 {
@@ -24,15 +24,15 @@ namespace QuipVidControllers.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<QuipDto>>> Index()
+        public async Task<ActionResult<IList<ListQuipResult>>> List()
         {
             var quips = await _quipRepository.GetAll();
 
-            return _mapper.Map<List<QuipDto>>(quips);
+            return _mapper.Map<List<ListQuipResult>>(quips);
         }
 
         [HttpGet("{id:guid}")]
-        public async Task<ActionResult<QuipDto>> Show(Guid id)
+        public async Task<ActionResult<GetQuipResult>> Get(Guid id)
         {
             var quip = await _quipRepository.GetById(id);
 
@@ -41,11 +41,11 @@ namespace QuipVidControllers.Controllers
                 return NotFound();
             }
 
-            return _mapper.Map<QuipDto>(quip);
+            return _mapper.Map<GetQuipResult>(quip);
         }
 
         [HttpPost]
-        public async Task<ActionResult<QuipDto>> Create(CreateQuipRequest createQuip)
+        public async Task<ActionResult<CreateQuipResult>> Create(CreateQuipRequest createQuip)
         {
             var quip = new Quip
             {
@@ -60,9 +60,9 @@ namespace QuipVidControllers.Controllers
 
             quip = await _quipRepository.GetById(quip.Id);
 
-            var quipDto = _mapper.Map<QuipDto>(quip);
+            var quipDto = _mapper.Map<CreateQuipResult>(quip);
 
-            return CreatedAtAction(nameof(Show), new { id = quipDto.Id }, quipDto);
+            return CreatedAtAction(nameof(Get), new { id = quipDto.Id }, quipDto);
         }
 
         [HttpPut("{id:guid}")]

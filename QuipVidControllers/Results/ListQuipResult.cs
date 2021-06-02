@@ -1,8 +1,8 @@
 using System;
 
-namespace QuipVid.Core.Models.Dto
+namespace QuipVidControllers.Results
 {
-    public class QuipDto
+    public class ListQuipResult
     {
         public Guid Id { get; set; }
         public string Title { get; set; }

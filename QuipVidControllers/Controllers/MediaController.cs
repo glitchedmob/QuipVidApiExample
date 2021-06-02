@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using QuipVid.Core.Models;
-using QuipVid.Core.Models.Dto;
 using QuipVid.Core.Repositories;
 using QuipVidControllers.Requests;
+using QuipVidControllers.Results;
 
 namespace QuipVidControllers.Controllers
 {
@@ -24,15 +24,15 @@ namespace QuipVidControllers.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<MediaDto>>> Index()
+        public async Task<ActionResult<IList<ListMediaResult>>> List()
         {
             var media = await _mediaRepository.GetAll();
 
-            return _mapper.Map<List<MediaDto>>(media);
+            return _mapper.Map<List<ListMediaResult>>(media);
         }
 
         [HttpGet("{id:guid}")]
-        public async Task<ActionResult<MediaDto>> Show(Guid id)
+        public async Task<ActionResult<GetMediaResult>> Get(Guid id)
         {
             var media = await _mediaRepository.GetById(id);
 
@@ -41,11 +41,11 @@ namespace QuipVidControllers.Controllers
                 return NotFound();
             }
 
-            return _mapper.Map<MediaDto>(media);
+            return _mapper.Map<GetMediaResult>(media);
         }
 
         [HttpPost]
-        public async Task<ActionResult<MediaDto>> Create(CreateMediaRequest createMedia)
+        public async Task<ActionResult<CreateMediaResult>> Create(CreateMediaRequest createMedia)
         {
             var media = new Media
             {
@@ -54,9 +54,9 @@ namespace QuipVidControllers.Controllers
 
             await _mediaRepository.Create(media);
 
-            var mediaDto = _mapper.Map<MediaDto>(media);
+            var mediaDto = _mapper.Map<CreateMediaResult>(media);
 
-            return CreatedAtAction(nameof(Show), new { id = mediaDto.Id }, mediaDto);
+            return CreatedAtAction(nameof(Get), new { id = mediaDto.Id }, mediaDto);
         }
 
         [HttpPut("{id:guid}")]
