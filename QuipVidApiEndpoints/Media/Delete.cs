@@ -20,7 +20,7 @@ namespace QuipVidApiEndpoints.Media
 
         [HttpDelete("{id:guid}")]
         public override async Task<ActionResult> HandleAsync(DeleteMediaRequest request,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken)
         {
             var media = await _mediaRepository.GetById(request.Id);
 

@@ -49,6 +49,15 @@
       <Compile Update="Quip\CreateQuipResult.cs">
         <DependentUpon>Create.cs</DependentUpon>
       </Compile>
+      <Compile Update="Quip\UpdateQuipRequest.cs">
+        <DependentUpon>Update.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Quip\ListQuipResult.cs">
+        <DependentUpon>List.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Quip\DeleteQuipRequest.cs">
+        <DependentUpon>Delete.cs</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>

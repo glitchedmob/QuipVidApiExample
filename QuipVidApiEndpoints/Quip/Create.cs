@@ -5,6 +5,7 @@ using Ardalis.ApiEndpoints;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using QuipVid.Core.Repositories;
+using QuipVidApiEndpoints.Extensions;
 using Models = QuipVid.Core.Models;
 
 namespace QuipVidApiEndpoints.Quip
@@ -25,7 +26,7 @@ namespace QuipVidApiEndpoints.Quip
 
         [HttpPost]
         public override async Task<ActionResult<CreateQuipResult>> HandleAsync(CreateQuipRequest request,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken)
         {
             var quip = new Models.Quip
             {
@@ -42,7 +43,7 @@ namespace QuipVidApiEndpoints.Quip
 
             var result = _mapper.Map<CreateQuipResult>(quip);
 
-            return Created(new Uri($"{Request.Path}/{result.Id}", UriKind.Relative), result);
+            return Created(new Uri($"{Request.GetAbsoluteUrl()}/{result.Id}"), result);
         }
     }
 }

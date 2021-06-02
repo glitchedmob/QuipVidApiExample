@@ -23,7 +23,7 @@ namespace QuipVidApiEndpoints.Media
 
         [HttpGet("{id:guid}")]
         public override async Task<ActionResult<GetMediaResult>> HandleAsync(GetMediaRequest request,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken)
         {
             var media = await _mediaRepository.GetById(request.Id);
 

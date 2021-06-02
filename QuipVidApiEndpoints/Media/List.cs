@@ -25,7 +25,7 @@ namespace QuipVidApiEndpoints.Media
 
         [HttpGet]
         public override async Task<ActionResult<IList<ListMediaResult>>> HandleAsync(
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken)
         {
             var media = await _mediaRepository.GetAll();
 

@@ -1,28 +1,25 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Ardalis.ApiEndpoints;
-using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using QuipVid.Core.Repositories;
 
 namespace QuipVidApiEndpoints.Quip
 {
     [Route(Routes.Quips)]
-    public class Get : BaseAsyncEndpoint
-        .WithRequest<GetQuipRequest>
-        .WithResponse<GetQuipResult>
+    public class Delete : BaseAsyncEndpoint
+        .WithRequest<DeleteQuipRequest>
+        .WithoutResponse
     {
         private readonly QuipRepository _quipRepository;
-        private readonly IMapper _mapper;
 
-        public Get(QuipRepository quipRepository, IMapper mapper)
+        public Delete(QuipRepository quipRepository)
         {
             _quipRepository = quipRepository;
-            _mapper = mapper;
         }
 
-        [HttpGet("{id:guid}")]
-        public override async Task<ActionResult<GetQuipResult>> HandleAsync(GetQuipRequest request,
+        [HttpDelete("{id:guid}")]
+        public override async Task<ActionResult> HandleAsync(DeleteQuipRequest request,
             CancellationToken cancellationToken)
         {
             var quip = await _quipRepository.GetById(request.Id);
@@ -32,7 +29,9 @@ namespace QuipVidApiEndpoints.Quip
                 return NotFound();
             }
 
-            return _mapper.Map<GetQuipResult>(quip);
+            await _quipRepository.Delete(quip);
+
+            return NoContent();
         }
     }
 }

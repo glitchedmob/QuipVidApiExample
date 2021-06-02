@@ -1,9 +1,11 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Ardalis.ApiEndpoints;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using QuipVid.Core.Repositories;
+using QuipVidApiEndpoints.Extensions;
 using Models = QuipVid.Core.Models;
 
 namespace QuipVidApiEndpoints.Media
@@ -24,7 +26,7 @@ namespace QuipVidApiEndpoints.Media
 
         [HttpPost]
         public override async Task<ActionResult<CreateMediaResult>> HandleAsync([FromBody] CreateMediaRequest request,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken)
         {
             var media = new Models.Media
             {
@@ -35,7 +37,7 @@ namespace QuipVidApiEndpoints.Media
 
             var result = _mapper.Map<CreateMediaResult>(media);
 
-            return CreatedAtAction(nameof(Get.HandleAsync), nameof(Get), new { id = result.Id }, result);
+            return Created(new Uri($"{Request.GetAbsoluteUrl()}/{result.Id}"), result);
         }
     }
 }

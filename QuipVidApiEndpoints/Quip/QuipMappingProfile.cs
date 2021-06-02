@@ -13,7 +13,15 @@ namespace QuipVidApiEndpoints.Quip
                     opt => opt.MapFrom(src => src.Media.Title))
                 .ForMember(
                     dest => dest.UploaderUserName,
-                    opt => opt.MapFrom(src => src.Uploader.UserName));;
+                    opt => opt.MapFrom(src => src.Uploader.UserName));
+
+            CreateMap<Models.Quip, ListQuipResult>()
+                .ForMember(
+                    dest => dest.MediaTitle,
+                    opt => opt.MapFrom(src => src.Media.Title))
+                .ForMember(
+                    dest => dest.UploaderUserName,
+                    opt => opt.MapFrom(src => src.Uploader.UserName));
 
             CreateMap<Models.Quip, CreateQuipResult>()
                 .ForMember(
@@ -21,7 +29,7 @@ namespace QuipVidApiEndpoints.Quip
                     opt => opt.MapFrom(src => src.Media.Title))
                 .ForMember(
                     dest => dest.UploaderUserName,
-                    opt => opt.MapFrom(src => src.Uploader.UserName));;
+                    opt => opt.MapFrom(src => src.Uploader.UserName));
         }
     }
 }
