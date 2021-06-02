@@ -4,6 +4,7 @@ using Ardalis.ApiEndpoints;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using QuipVid.Core.Repositories;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace QuipVidApiEndpoints.User
 {
@@ -22,6 +23,7 @@ namespace QuipVidApiEndpoints.User
         }
 
         [HttpGet("{id:guid}")]
+        [SwaggerOperation(Tags = new []{ "User" })]
         public override async Task<ActionResult<GetUserResult>> HandleAsync(GetUserRequest request,
             CancellationToken cancellationToken)
         {

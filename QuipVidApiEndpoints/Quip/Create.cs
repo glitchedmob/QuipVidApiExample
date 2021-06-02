@@ -6,6 +6,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using QuipVid.Core.Repositories;
 using QuipVidApiEndpoints.Extensions;
+using Swashbuckle.AspNetCore.Annotations;
 using Models = QuipVid.Core.Models;
 
 namespace QuipVidApiEndpoints.Quip
@@ -25,6 +26,7 @@ namespace QuipVidApiEndpoints.Quip
         }
 
         [HttpPost]
+        [SwaggerOperation(Tags = new []{ "Quip" })]
         public override async Task<ActionResult<CreateQuipResult>> HandleAsync(CreateQuipRequest request,
             CancellationToken cancellationToken)
         {

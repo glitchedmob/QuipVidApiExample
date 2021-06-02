@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Ardalis.ApiEndpoints;
 using Microsoft.AspNetCore.Mvc;
 using QuipVid.Core.Repositories;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace QuipVidApiEndpoints.Quip
 {
@@ -19,6 +20,7 @@ namespace QuipVidApiEndpoints.Quip
         }
 
         [HttpDelete("{id:guid}")]
+        [SwaggerOperation(Tags = new []{ "Quip" })]
         public override async Task<ActionResult> HandleAsync(DeleteQuipRequest request,
             CancellationToken cancellationToken)
         {

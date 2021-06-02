@@ -5,6 +5,7 @@ using Ardalis.ApiEndpoints;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using QuipVid.Core.Repositories;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace QuipVidApiEndpoints.Quip
 {
@@ -22,7 +23,8 @@ namespace QuipVidApiEndpoints.Quip
             _mapper = mapper;
         }
 
-        [HttpDelete]
+        [HttpGet]
+        [SwaggerOperation(Tags = new []{ "Quip" })]
         public override async Task<ActionResult<IList<ListQuipResult>>> HandleAsync(CancellationToken cancellationToken)
         {
             var quips = await _quipRepository.GetAll();

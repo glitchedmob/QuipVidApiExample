@@ -6,6 +6,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using QuipVid.Core.Repositories;
 using QuipVidApiEndpoints.Extensions;
+using Swashbuckle.AspNetCore.Annotations;
 using Models = QuipVid.Core.Models;
 
 namespace QuipVidApiEndpoints.Media
@@ -25,6 +26,7 @@ namespace QuipVidApiEndpoints.Media
         }
 
         [HttpPost]
+        [SwaggerOperation(Tags = new []{ "Media" } )]
         public override async Task<ActionResult<CreateMediaResult>> HandleAsync([FromBody] CreateMediaRequest request,
             CancellationToken cancellationToken)
         {

@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Ardalis.ApiEndpoints;
 using Microsoft.AspNetCore.Mvc;
 using QuipVid.Core.Repositories;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace QuipVidApiEndpoints.Media
 {
@@ -19,6 +20,7 @@ namespace QuipVidApiEndpoints.Media
         }
 
         [HttpPut("{id:guid}")]
+        [SwaggerOperation(Tags = new []{ "Media" })]
         public override async Task<ActionResult> HandleAsync(UpdateMediaRequest request,
             CancellationToken cancellationToken)
         {
