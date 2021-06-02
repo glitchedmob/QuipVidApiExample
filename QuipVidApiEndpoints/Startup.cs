@@ -27,11 +27,6 @@ namespace QuipVidApiEndpoints
             services.AddScoped<UserRepository>();
             services.AddScoped<QuipRepository>();
 
-            services.AddControllers(options =>
-            {
-                options.SuppressAsyncSuffixInActionNames = false;
-            });
-
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "QuipVidApiExample", Version = "v1" });
