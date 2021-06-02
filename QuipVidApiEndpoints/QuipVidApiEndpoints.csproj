@@ -18,55 +18,55 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="Media\GetMediaRequest.cs">
+      <Compile Update="Features\Media\GetMediaRequest.cs">
         <DependentUpon>Get.cs</DependentUpon>
       </Compile>
-      <Compile Update="Media\CreateMediaRequest.cs">
+      <Compile Update="Features\Media\CreateMediaRequest.cs">
         <DependentUpon>Create.cs</DependentUpon>
       </Compile>
-      <Compile Update="Media\ListMediaResult.cs">
+      <Compile Update="Features\Media\ListMediaResult.cs">
         <DependentUpon>List.cs</DependentUpon>
       </Compile>
-      <Compile Update="Media\GetMediaResult.cs">
+      <Compile Update="Features\Media\GetMediaResult.cs">
         <DependentUpon>Get.cs</DependentUpon>
       </Compile>
-      <Compile Update="Media\CreateMediaResult.cs">
+      <Compile Update="Features\Media\CreateMediaResult.cs">
         <DependentUpon>Create.cs</DependentUpon>
       </Compile>
-      <Compile Update="Media\UpdateMediaRequest.cs">
+      <Compile Update="Features\Media\UpdateMediaRequest.cs">
         <DependentUpon>Update.cs</DependentUpon>
       </Compile>
-      <Compile Update="Media\DeleteMediaRequest.cs">
+      <Compile Update="Features\Media\DeleteMediaRequest.cs">
         <DependentUpon>Delete.cs</DependentUpon>
       </Compile>
-      <Compile Update="Quip\GetQuipRequest.cs">
+      <Compile Update="Features\Quip\GetQuipRequest.cs">
         <DependentUpon>Get.cs</DependentUpon>
       </Compile>
-      <Compile Update="Quip\GetQuipResult.cs">
+      <Compile Update="Features\Quip\GetQuipResult.cs">
         <DependentUpon>Get.cs</DependentUpon>
       </Compile>
-      <Compile Update="Quip\CreateQuipRequest.cs">
+      <Compile Update="Features\Quip\CreateQuipRequest.cs">
         <DependentUpon>Create.cs</DependentUpon>
       </Compile>
-      <Compile Update="Quip\CreateQuipResult.cs">
+      <Compile Update="Features\Quip\CreateQuipResult.cs">
         <DependentUpon>Create.cs</DependentUpon>
       </Compile>
-      <Compile Update="Quip\UpdateQuipRequest.cs">
+      <Compile Update="Features\Quip\UpdateQuipRequest.cs">
         <DependentUpon>Update.cs</DependentUpon>
       </Compile>
-      <Compile Update="Quip\ListQuipResult.cs">
+      <Compile Update="Features\Quip\ListQuipResult.cs">
         <DependentUpon>List.cs</DependentUpon>
       </Compile>
-      <Compile Update="Quip\DeleteQuipRequest.cs">
+      <Compile Update="Features\Quip\DeleteQuipRequest.cs">
         <DependentUpon>Delete.cs</DependentUpon>
       </Compile>
-      <Compile Update="User\ListUserResult.cs">
+      <Compile Update="Features\User\ListUserResult.cs">
         <DependentUpon>List.cs</DependentUpon>
       </Compile>
-      <Compile Update="User\GetUserResult.cs">
+      <Compile Update="Features\User\GetUserResult.cs">
         <DependentUpon>Get.cs</DependentUpon>
       </Compile>
-      <Compile Update="User\GetUserRequest.cs">
+      <Compile Update="Features\User\GetUserRequest.cs">
         <DependentUpon>Get.cs</DependentUpon>
       </Compile>
     </ItemGroup>
